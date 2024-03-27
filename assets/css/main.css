@@ -136,7 +136,7 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: #ffffff;
-		font-family: 'Tahoma';
+		font-family: 'Garamond';
 		font-weight: 300;
 		font-size: 1rem;
 		line-height: 1.65;
@@ -150,6 +150,7 @@ input, select, textarea {
 		border-bottom: dotted 1px rgba(255, 255, 255, 0.5);
 		text-decoration: none;
 		color: inherit;
+		font-family: 'Tahoma';
 	}
 
 		a:hover {
@@ -165,13 +166,15 @@ input, select, textarea {
 		font-style: italic;
 	}
 
-	p {
+	p, span, ul {
 		margin: 0 0 2rem 0;
+		font-family: 'Tahoma';
+		src: url("https://fonts.googleapis.com/css?family=Tahoma")
 	}
 
 	h1, h2, h3, h4, h5, h6 {
 		color: #ffffff;
-		font-weight: 600;
+		font-weight: 650;
 		line-height: 1.5;
 		margin: 0 0 1rem 0;
 		text-transform: uppercase;
@@ -255,7 +258,7 @@ input, select, textarea {
 	}
 
 	code {
-		background: rgba(255, 255, 255, 0.075);
+		background: rgba(255, 255, 255, 0.075); 
 		border-radius: 4px;
 		font-family: "Courier New", monospace;
 		font-size: 0.9rem;
