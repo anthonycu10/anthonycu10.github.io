@@ -1,0 +1,75 @@
+/* src/styles/Header.css */
+
+/* Basic styling for the header */
+.header {
+    position: sticky;
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure the header stays above other content */
+    background-color: #302C28; /* Background color to make it visible */
+    color: #EEEDEA; /* Text color */
+    padding: 10px 20px; /* Padding for the header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Logo Styling */
+  .header .logo h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  /* Navigation links container */
+  .nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Space between the nav items */
+  }
+  
+  .nav-links li {
+    display: inline-block;
+  }
+  
+  /* Styling for each link */
+  .nav-links a {
+    color: #EEEDEA;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover effect for links */
+  .nav-links a:hover {
+    color: #C7C3BB; /* Change color on hover (blue) */
+  }
+  
+  /* Responsive Design: Mobile View */
+  @media (max-width: 768px) {
+    /* Stack the header elements vertically on small screens */
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    /* Make the logo bigger on mobile */
+    .header .logo h1 {
+      font-size: 2.5rem;
+    }
+  
+    /* Stack the navigation links vertically on mobile */
+    .nav-links ul {
+      display: block;
+      margin-top: 20px;
+    }
+  
+    .nav-links li {
+      margin-bottom: 15px; /* Space out the links vertically */
+    }
+  
+    /* Optional: Add some padding to the header */
+    .header {
+      padding: 15px;
+    }
+  }  

@@ -1,0 +1,62 @@
+/* src/styles/About.css */
+
+/* Add this to center the About section */
+.about-section {
+    display: flex; /* Enable Flexbox */
+    justify-content: center; /* Horizontally center content */
+    align-items: center; /* Vertically center content */
+    min-height: 80vh; /* Full viewport height to make it center vertically */
+    padding: 40px 20px; /* Add some padding for spacing */
+    max-width: 1200px; /* Limit the maximum width of the content */
+    margin: 0 auto; /* Auto margin to center horizontally within its container */
+    flex-direction: column; /* Arrange children (image and text) vertically */
+  }
+  
+  .about-content {
+    display: flex; /* Enable Flexbox */
+    flex-direction: row; /* Image and text side by side */
+    align-items: center; /* Vertically center image and text */
+    gap: 40px; /* Space between image and text */
+    justify-content: center; /* Horizontally center the content */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  }
+  
+  .about-image img {
+    width: 300px; /* Adjust image size */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  }
+  
+  .about-text {
+    flex: 1; /* Text section takes remaining space */
+    max-width: 600px; /* Optional: Limit text section width */
+    text-align: left; 
+  }
+  
+  .about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #EEEDEA;
+  }
+  
+  .about-text p {
+    font-size: 1.1rem;
+    color: #EEEDEA;
+    line-height: 1.8;
+    margin-bottom: 15px;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .about-content {
+      flex-direction: column; /* Stack image and text on small screens */
+      text-align: center; /* Center text when stacked */
+    }
+  
+    .about-image img {
+      width: 80%; /* Adjust image width */
+      max-width: 300px; /* Limit max width of image */
+    }
+  }
+  

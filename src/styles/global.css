@@ -1,0 +1,19 @@
+/* src/styles/global.css */
+
+/* Importing Google Fonts at the top of global.css */
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Add padding to the left and right (20px) */
+    font-family: 'Merriweather', sans-serif; /* Set a default font-family */
+    background-color: #302C28; 
+    color: #EEEDEA; /* Default text color */
+    line-height: 1.6; /* Improve text readability */
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }

@@ -1,0 +1,63 @@
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    width: 80%; /* Take up 80% of the screen width */
+    max-width: 1200px; /* Maximum width */
+    height: 80%; /* Take up 80% of the screen height */
+    max-height: 90vh; /* Ensure it doesn’t exceed the viewport height */
+    overflow-y: auto; /* Make content scrollable if necessary */
+    position: relative;
+    opacity: 0; /* Start as invisible */
+    transform: translateY(50px); /* Start off-screen for animation */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Modal Content Visible (animation for showing) */
+  .modal-content.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Close Button */
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .close-button:hover {
+    color: #ff0000; /* Red color on hover */
+  }
+  
+  /* GitHub Link */
+  .github-link {
+    display: block;
+    margin-top: 20px;
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .github-link:hover {
+    text-decoration: underline;
+  }
+  
