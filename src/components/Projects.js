@@ -42,7 +42,7 @@ const Projects = () => {
         time: 'Winter 2024',
         description: 'Unsupervised ML project predicting Taylor Swift song themes using NLP on lyrics',
         technologies: ['R', 'API'],
-        githubLink: 'https://anthonycu10.github.io/work/MLProject.html',
+        githubLink: 'https://anthonycu10.github.io/src/assets/MLProject.html',
     },
     {
         title: 'Diseases of Affluence',
@@ -62,7 +62,7 @@ const Projects = () => {
         title: 'Old DS Portfolio',
         description: 'im sorry but the old taylor cant come to the phone rn',
         technologies: ['HTML', 'GitHub'],
-        githubLink: 'https://github.com/your-username/blog-platform',
+        githubLink: 'https://github.com/anthonycu10/old_ds_portfolio',
       }
   ];
 
