@@ -6,6 +6,13 @@ import '../styles/Projects.css';
 const Projects = () => {
   const projectList = [
     {
+      title: 'Employment Outcomes for College Graduates',
+      time: 'Winter 2025',
+      description: 'Time series analysis to forecast employment populations',
+      technologies: ['R'],
+      githubLink: 'https://github.com/anthonycu10/forecasting_employment-grad',
+    },
+    {
       title: 'Undergraduate Social Network Analysis',
       time: 'Fall 2024 - present',
       description: 'Education research study (UCSB PSTAT Department)',
