@@ -64,13 +64,7 @@ const Projects = () => {
         description: 'Data visualizations on 1K+ conversation histories',
         technologies: ['R'],
         githubLink: 'https://www.leanonme.chat/impact',
-    },
-    {
-        title: 'Old DS Portfolio',
-        description: 'im sorry but the old taylor cant come to the phone rn',
-        technologies: ['HTML', 'GitHub'],
-        githubLink: 'https://github.com/anthonycu10/old_ds_portfolio',
-      }
+    }
   ];
 
   return (
