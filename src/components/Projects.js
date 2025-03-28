@@ -49,7 +49,7 @@ const Projects = () => {
         time: 'Winter 2024',
         description: 'Unsupervised ML project predicting Taylor Swift song themes using NLP on lyrics',
         technologies: ['R', 'API'],
-        githubLink: 'https://anthonycu10.github.io/src/assets/MLProject.html',
+        githubLink: 'https://github.com/anthonycu10/Spotify_Musixmatch',
     },
     {
         title: 'Diseases of Affluence',
