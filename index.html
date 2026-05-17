@@ -1,1 +1,431 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Web site created using create-react-app"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>Anthony Cu</title><script defer="defer" src="/static/js/main.2e573049.js"></script><link href="/static/css/main.7dbcef67.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anthony Cu</title>
+<link rel="icon" href="favicon.ico">
+
+<style>
+
+/* FULLSCREEN */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* SPLASH SCREEN */
+.splash {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: radial-gradient(circle at center, #2a2622, #0e0c0b);
+  cursor: pointer;
+  z-index: 1000;
+  color: #e8e2d6;
+}
+
+/* TYPEWRITER TEXT */
+.typewriter {
+  font-family: 'Courier New', monospace;
+  font-size: 1.8rem;
+  border-right: 2px solid #e8e2d6;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(30,end) forwards, blink 0.8s infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 18ch }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+/* ROOM */
+.room {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #433D39;
+}
+
+.scene {
+    position: absolute;
+
+    width: 1440px;
+    height: 900px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(min(calc(100vw / 1440), calc(100vh / 900)));
+
+    transform-origin: center center;
+}
+
+/* DARK FILTER */
+.room::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,220,170,0.08) 0%,
+            rgba(0,0,0,0.45) 75%
+        );
+    pointer-events: none;
+}
+
+/* FLOOR */
+.floor {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background: #70584A;
+}
+
+/* WINDOW */
+.window {
+    position: absolute;
+    left: 30px;
+    top: 40px;
+    width: 375px;
+    height: 270px;
+    border: 3px solid #B7A58D;
+}
+
+.window img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+    from { transform: scale(1) translateX(0px); }
+    to { transform: scale(1.05) translateX(-10px); }
+}
+
+/* SHELF */
+.shelf {
+    position: absolute;
+    right: 40px;
+    top: 180px;
+    width: 300px;
+}
+
+.shelf img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.hidden-image {
+    position: absolute;
+    right: 40px;
+    top: 70px;
+    width: 180px;
+    height: 350px;
+    display: none;
+}
+
+/* DESK */
+.desk {
+    position: absolute;
+    bottom: 60px;
+    left: 180px;
+    width: 450px;
+    height: 120px;
+}
+
+.desk-dark {
+    filter:
+        brightness(0.65)
+        contrast(1.1)
+        saturate(0.85);
+}
+
+/* ITEMS */
+.desk-item {
+    position: absolute;
+    z-index: 5;
+}
+
+.desk-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* CLICKABLE */
+.clickable:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* TOOLTIP CONTAINER */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* TOOLTIP TEXT */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    opacity: 0;
+
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: rgba(20,20,20,0.92);
+    color: #f5ecd7;
+
+    padding: 8px 12px;
+    border-radius: 6px;
+
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    white-space: nowrap;
+
+    transition: opacity 0.25s ease;
+
+    z-index: 9999;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    pointer-events: none;
+}
+
+/* SHOW TOOLTIP */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* CLOCK */
+.clock {
+    position: absolute;
+    top: 40px;
+    left: 650px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    border: 4px solid #2d3436;
+}
+
+.hand {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background: black;
+    top: 5px;
+    left: 50%;
+    transform-origin: bottom;
+    animation: rotateClock 10s linear infinite;
+}
+
+@keyframes rotateClock {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* NOTE */
+.note {
+    position: fixed;
+    bottom: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    background: #f5ecd7;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    transition: transform 0.6s ease, bottom 0.6s ease;
+    z-index: 999;
+}
+
+/* SLIDE UP */
+.note.show {
+    bottom: 50px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="splash" onclick="enterSite()">
+    <div class="typewriter">still loading...?</div>
+</div>
+
+<div class="room" id="room" style="display:none;">
+
+
+    <!-- WINDOW -->
+    <div class="window">
+        <img id="windowImage">
+    </div>
+
+    <!-- CLOCK -->
+    <div class="clock"><div class="hand"></div></div>
+
+    <!-- HIDDEN IMAGE -->
+    <img src="assets/IMG_6156.JPG" class="hidden-image" id="hiddenImage">
+
+    <!-- SHELF -->
+    <div class="shelf" onclick="toggleShelf()">
+        <img src="assets/shelf.png">
+    </div>
+
+    <!-- DESK -->
+    <div class="desk">
+
+        <!-- YOUR ORIGINAL ITEMS (UNCHANGED) -->
+
+        <div class="desk-item" style="left:-160px; top:-130px; width:270px; height:270px;">
+            <img src="assets/boxes.png">
+        </div>
+
+        <div class="desk-item" style="left:-50px; top:-400px; width:1100px; height:1100px;">
+            <img src="assets/table.png" class="desk-dark">
+        </div>
+
+        <div class="desk-item" style="left:280px; top:-160px; width:100px;">
+            <img src="assets/books.png">
+        </div>
+
+        <div class="desk-item" style="left:280px; top:-180px; width:100px;">
+            <img src="assets/books.png">
+        </div>
+
+        <div class="desk-item" style="left:600px; top:-150px; width:100px;">
+            <img src="assets/phones.png">
+        </div>
+
+        <!-- TYPEWRITER (clickable trigger) -->
+        <div class="desk-item clickable" onclick="openNote()" style="left:310px; top:-200px; width:370px;">
+            <img src="assets/typewriter.png">
+        </div>
+
+        <div class="desk-item" style="left:150px; top:-180px; width:170px; transform:rotate(90deg);">
+            <img src="assets/dna.png">
+        </div>
+
+        <div class="desk-item" style="left:230px; top:-40px; width:80px;">
+            <img src="assets/tickets.png">
+        </div>
+
+        <div class="desk-item" style="left:260px; top:-110px; width:50px;">
+            <img src="assets/mentalhealth.png">
+        </div>
+
+        <!-- MUSIC LINK -->
+        <a href="https://open.spotify.com/album/4a6NzYL1YHRUgx9e3YZI6I?si=GvQQB6mMR-iFWnzNxYKOiQ" target="_blank">
+            <div class="desk-item clickable tooltip" style="left:180px; top: -60px; width:100px;">
+		<span class="tooltiptext">what i'm listening to atm</span>
+                <img src="assets/music.png">
+            </div>
+        </a>
+
+        <div class="desk-item" style="left:700px; top:-300px; width:160px;">
+            <img src="assets/papers.png">
+        </div>
+
+        <!-- STARBUCKS LINK -->
+        <a href="https://www.linkedin.com/in/anthonycu/" target="_blank">
+            <div class="desk-item clickable tooltip" style="left:650px; top:-140px; width:120px;">
+                <span class="tooltiptext">let's connect</span>
+		<img src="assets/starbucks.png">
+            </div>
+        </a>
+
+        <div class="desk-item" style="left:700px; top:-30px; width:80px;">
+            <img src="assets/calculator.png">
+        </div>
+
+    </div>
+
+    <div class="floor"></div>
+
+
+</div>
+
+<!-- NOTE -->
+<div class="note" id="note">
+    <div class="close-btn" onclick="closeNote()">✕</div>
+    <p>
+        <strong>Hello World</strong><br><br>
+        desk curated by Anthony (in collaboration with ChatGPT)
+    </p>
+</div>
+
+<script>
+
+/* ENTER */
+function enterSite() {
+    document.querySelector(".loading").style.display = "none";
+    document.getElementById("room").style.display = "block";
+    typeWriter();
+}
+
+/* RANDOM WINDOW */
+const imgs = ["assets/beach.jpeg","assets/view2.png","assets/view3.JPG"];
+document.getElementById("windowImage").src =
+    imgs[Math.floor(Math.random()*imgs.length)];
+
+/* SHELF */
+function toggleShelf(){
+    const shelf = document.querySelector(".shelf");
+    const hidden = document.getElementById("hiddenImage");
+
+    shelf.style.display = shelf.style.display === "none" ? "block" : "none";
+    hidden.style.display = hidden.style.display === "block" ? "none" : "block";
+}
+
+/* NOTE */
+function enterSite() {
+    document.querySelector(".splash").style.display = "none";
+    document.getElementById("room").style.display = "block";
+
+    // slide note up after entering
+    setTimeout(() => {
+        document.getElementById("note").classList.add("show");
+    }, 400);
+}
+
+function closeNote() {
+    document.getElementById("note").classList.remove("show");
+}
+
+function openNote() {
+    document.getElementById("note").classList.add("show");
+}
+
+</script>
+
+</body>
+</html>
