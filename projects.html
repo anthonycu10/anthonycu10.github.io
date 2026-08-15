@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects — Anthony</title>
+
+    <link rel="icon" href="favicon.ico">
+
+    <style>
+
+        /* =========================================
+           GLOBAL
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    #3b3432 0%,
+                    #211d1c 45%,
+                    #100f0e 100%
+                );
+
+            color: #e8e2d6;
+
+            font-family:
+                Georgia,
+                'Times New Roman',
+                serif;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================================
+           PAPER / PAGE
+        ========================================= */
+
+        .page {
+            width: min(1100px, 90%);
+            margin: 0 auto;
+            padding: 70px 0 100px;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        header {
+            text-align: center;
+            margin-bottom: 70px;
+
+            animation:
+                fadeUp 1s ease forwards;
+        }
+
+        .eyebrow {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+
+            color: #b7a58d;
+
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 7vw, 82px);
+            font-weight: normal;
+            font-style: italic;
+
+            margin: 0;
+
+            letter-spacing: -2px;
+        }
+
+        .subtitle {
+            margin-top: 18px;
+
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+
+            color: #aaa19a;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================
+           DIVIDER
+        ========================================= */
+
+        .divider {
+            width: 100%;
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent,
+                    #786d64,
+                    transparent
+                );
+
+            margin: 40px 0 55px;
+        }
+
+
+        /* =========================================
+           PROJECT GRID
+        ========================================= */
+
+        .projects {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 28px;
+        }
+
+
+        /* =========================================
+           PROJECT CARD
+        ========================================= */
+
+        .project {
+            position: relative;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(245,236,215,0.08),
+                    rgba(245,236,215,0.025)
+                );
+
+            border: 1px solid rgba(232,226,214,0.16);
+
+            padding: 32px;
+
+            min-height: 300px;
+
+            transition:
+                transform 0.35s ease,
+                border-color 0.35s ease,
+                background 0.35s ease;
+
+            overflow: hidden;
+        }
+
+
+        .project::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            right: -80px;
+            bottom: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(183,165,141,0.06);
+
+            transition:
+                transform 0.5s ease;
+        }
+
+
+        .project:hover {
+            transform: translateY(-7px);
+
+            border-color:
+                rgba(232,226,214,0.35);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(245,236,215,0.12),
+                    rgba(245,236,215,0.04)
+                );
+        }
+
+
+        .project:hover::before {
+            transform: scale(2);
+        }
+
+
+        /* =========================================
+           PROJECT NUMBER
+        ========================================= */
+
+        .project-number {
+            font-family: 'Courier New', monospace;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            color: #8f8278;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================
+           PROJECT TITLE
+        ========================================= */
+
+        .project h2 {
+            font-size: 30px;
+
+            font-weight: normal;
+
+            margin:
+                0 0 14px;
+
+            color: #f0e9dd;
+        }
+
+
+        /* =========================================
+           DESCRIPTION
+        ========================================= */
+
+        .description {
+            color: #bdb5ad;
+
+            line-height: 1.7;
+
+            font-size: 15px;
+
+            max-width: 520px;
+        }
+
+
+        /* =========================================
+           TECHNOLOGIES
+        ========================================= */
+
+        .technologies {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 25px;
+        }
+
+        .technology {
+            border: 1px solid rgba(183,165,141,0.3);
+
+            padding:
+                5px 9px;
+
+            font-family: 'Courier New', monospace;
+
+            font-size: 11px;
+
+            color: #b7a58d;
+        }
+
+
+        /* =========================================
+           PROJECT LINK
+        ========================================= */
+
+        .project-link {
+            display: inline-block;
+
+            margin-top: 30px;
+
+            color: #e8e2d6;
+
+            text-decoration: none;
+
+            font-family: 'Courier New', monospace;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+
+            border-bottom:
+                1px solid #8f8278;
+
+            padding-bottom: 4px;
+
+            transition:
+                color 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .project-link:hover {
+            color: #ffffff;
+
+            border-color: #ffffff;
+        }
+
+
+        /* =========================================
+           FEATURED PROJECT
+        ========================================= */
+
+        .featured {
+            grid-column: span 2;
+
+            min-height: 360px;
+
+            padding: 42px;
+        }
+
+        .featured h2 {
+            font-size: 38px;
+        }
+
+
+        /* =========================================
+           BACK TO DESK
+        ========================================= */
+
+        .back {
+            text-align: center;
+
+            margin-top: 80px;
+        }
+
+        .back a {
+            color: #b7a58d;
+
+            text-decoration: none;
+
+            font-family: 'Courier New', monospace;
+
+            font-size: 13px;
+
+            letter-spacing: 1px;
+
+            transition:
+                color 0.25s ease;
+        }
+
+        .back a:hover {
+            color: #f5ecd7;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        footer {
+            text-align: center;
+
+            margin-top: 70px;
+
+            font-family: 'Courier New', monospace;
+
+            font-size: 11px;
+
+            color: #706962;
+        }
+
+
+        /* =========================================
+           ANIMATION
+        ========================================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        .project {
+            opacity: 0;
+            animation:
+                fadeUp 0.8s ease forwards;
+        }
+
+        .project:nth-child(1) {
+            animation-delay: 0.15s;
+        }
+
+        .project:nth-child(2) {
+            animation-delay: 0.30s;
+        }
+
+        .project:nth-child(3) {
+            animation-delay: 0.45s;
+        }
+
+        .project:nth-child(4) {
+            animation-delay: 0.60s;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
+
+            .page {
+                padding-top: 45px;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .featured {
+                grid-column: span 1;
+            }
+
+            .project {
+                padding: 25px;
+            }
+
+            .featured {
+                padding: 28px;
+            }
+
+            .project h2 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header>
+
+        <div class="eyebrow">
+            selected works
+        </div>
+
+        <h1>Projects</h1>
+
+        <div class="subtitle">
+            things i've built, analyzed &amp; explored
+        </div>
+
+    </header>
+
+
+    <div class="divider"></div>
+
+
+    <!-- =========================================
+         PROJECTS
+    ========================================= -->
+
+    <main class="projects">
+
+
+        <!-- PROJECT 01 -->
+
+        <article class="project featured">
+
+            <div class="project-number">
+                DASHBOARD ANAYLTICS
+            </div>
+
+            <h2>
+                Billboard Hot 100
+                <br>
+                Analytics Dashboard
+            </h2>
+
+            <p class="description">
+                An analytics engineering project built around
+                historical Billboard Hot 100 chart data. The
+                project transforms raw chart data into a
+                structured SQLite data model and explores
+                artist, song, ranking, and chart-performance
+                trends.
+            </p>
+
+            <div class="technologies">
+
+                <span class="technology">
+                    Python
+                </span>
+
+                <span class="technology">
+                    SQL
+                </span>
+
+                <span class="technology">
+                    SQLite
+                </span>
+
+                <span class="technology">
+                    GeminiAPI
+                </span>
+
+                <span class="technology">
+                    Star schema
+                </span>
+
+            </div>
+
+            <a
+                href="https://billboard-hot100-analytics.streamlit.app/"
+                target="_blank"
+                class="project-link"
+            >
+                view project →
+            </a>
+
+        </article>
+
+
+        <!-- PROJECT 02 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                Text Analysis
+            </div>
+
+            <h2>
+                Spotify/Musixmatch Lyric Analysis
+            </h2>
+
+            <p class="description">
+                Text preprocessing and unsupervised machine learning project on Spotify and Musixmatch API data to analyze recurring song themes. 
+            </p>
+
+            <div class="technologies">
+
+                <span class="technology">
+                    R
+                </span>
+
+                <span class="technology">
+                    Unsupervised ML: Clustering
+                </span>
+
+            </div>
+
+            <a
+                href="projects/MLProject.html"
+                target="_blank"
+                class="project-link"
+            >
+                view project →
+            </a>
+
+        </article>
+
+
+        <!-- PROJECT 03 -->
+
+        <article class="project">
+
+            <div class="project-number">
+                Time Series Analysis
+            </div>
+
+            <h2>
+                Employment Outcomes for College Graduates
+            </h2>
+
+            <p class="description">
+                This project analyzes the total employment population of individuals with a bachelor’s degree or higher in order to assess workforce trends and forecast employment.
+            </p>
+
+            <div class="technologies">
+
+                <span class="technology">
+                    R
+                </span>
+
+                <span class="technology">
+                    Time Series
+                </span>
+
+            </div>
+
+            <a
+                href="projects/EmploymentRatesProject.html"
+                target="_blank"
+                class="project-link"
+            >
+                view project →
+            </a>
+
+        </article>
+
+    </main>
+
+
+    <!-- =========================================
+         RETURN TO DESK
+    ========================================= -->
+
+    <div class="back">
+
+        <a href="index.html">
+            ← return to the desk
+        </a>
+
+    </div>
+
+
+    <footer>
+
+        curated by Anthony
+
+    </footer>
+
+
+</div>
+
+</body>
+
+</html>
